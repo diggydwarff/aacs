@@ -1,0 +1,61 @@
+AACS 0.2.3-beta.1 adaptive display-column update
+
+158 isolated Lua checks passed; 0 failed.
+9 Python host deployment tests passed.
+
+The actual live-table renderer was visually inspected at 26, 51, 75 and 112
+columns, with long approved names, separate full ARD IDs, an unregistered UUID,
+TRACK/ALERT/CHECK states, monitor resizing and large world coordinates. Larger
+screens expand the name column; narrow screens retain a compact identity table.
+The existing 158-check suite includes monitor recovery and native/external
+display consistency. No new maintained tests were needed for this layout edit.
+
+The eight binding regressions from 0.2.2 cover the one-year default, duration boundaries,
+invalid durations without state changes, HQ restart/station-cache persistence,
+expiry exactly 365 real days later, renewal and idempotent retry, explicit
+unbinding before reassignment, preservation of old deadlines, and unchanged
+pilot-approval/permit limits. The maximum is exactly 525,600 real minutes.
+
+Host-only capacity check passed: oversized policy growth refused without commit;
+cleanup of an oversized imported policy remains possible.
+
+Signed-network scenario passed:
+180 flight steps, 6 vessels, 2 stations, 786 signed packets,
+184 accepted chat messages, 7 cross-station cancellations, 10 replay rejections.
+Used actual AACS encryption, replay state, storage, registry, tracker,
+communications and queue modules with simulated peripheral/event data.
+Covered both AP event/send API forms, duplicate relays, queued warning handoff,
+permit expiry, HQ restart, station outage, suspension, revocation, checkout,
+and loss/reacquisition of radar coverage. A connected pilot was not sent an
+obsolete violation warning in this scenario. Lost/unreachable links still limit
+cancellation; already sent chat cannot be recalled.
+
+Regression checks cover newer AP chat event order, missing UUID rejection,
+cancel-before-notice tombstones, HQ queue reset/restart ordering, queue priority,
+expired binding reclassification, older observations retaining their alias,
+identity changes versus lost contact, suspended-pilot communication, renewal
+of acknowledgements, and exported message/account/notice fields.
+
+The earlier cryptography, replay, permissions, sensor/Sable freshness, policy,
+contact UI, monitor recovery, report/printing and event-loop checks still pass.
+Deployment tests cover IDs/keys, all-target preflight, live-update refusal,
+explicit reset/backups, preservation, rollback, duplicate IDs, symlinks and
+unexpected startup/settings directory types.
+
+Installer: 20 exact-source runtime Lua files verified; config, transport state,
+registry/expiry and station policy preserved; live/unflagged updates refused.
+Python modules compile. ZIP CRC,
+manifest checksums and executable ZIP install/update/reset paths are checked.
+
+Repeat from the extracted AACS directory:
+  texlua tools/run_tests.lua
+  python3 tools/test_deployment.py
+  texlua tools/check_capacity.lua
+  texlua tools/check_scenarios.lua
+  texlua tools/check_install.lua
+
+NOT performed: running Minecraft, actual mod peripheral calls, real server
+cooldowns/ranges/chunk behavior, client monitor rendering, or an independent
+security/performance audit. Complete the in-world acceptance checklist.
+The monitor draw status is not proof a client's screen rendered its updates.
+All fixture keys/UUIDs are public test data; no live credentials are packaged.

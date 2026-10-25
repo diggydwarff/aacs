@@ -1,0 +1,60 @@
+[
+  {
+    "id": "public-transit",
+    "name": "Public transit example",
+    "shape": "box",
+    "minX": -1000,
+    "maxX": 1000,
+    "minZ": -1000,
+    "maxZ": 1000,
+    "minY": 64,
+    "maxY": 1200,
+    "class": "unrestricted",
+    "dimension": "minecraft:overworld",
+    "applies": "ships",
+    "enabled": true
+  },
+  {
+    "id": "capital-approach",
+    "name": "Capital approach example",
+    "shape": "cylinder",
+    "x": 0,
+    "z": 0,
+    "radius": 400,
+    "minY": 80,
+    "maxY": 900,
+    "class": "controlled",
+    "dimension": "minecraft:overworld",
+    "applies": "ships",
+    "enabled": true
+  },
+  {
+    "id": "airbase",
+    "name": "Airbase restricted example",
+    "shape": "box",
+    "minX": 500,
+    "maxX": 800,
+    "minZ": 100,
+    "maxZ": 400,
+    "minY": 64,
+    "maxY": 1200,
+    "class": "restricted",
+    "dimension": "minecraft:overworld",
+    "applies": "ships",
+    "enabled": true
+  },
+  {
+    "id": "secure-facility",
+    "name": "Secure facility example",
+    "shape": "cylinder",
+    "x": 650,
+    "z": 250,
+    "radius": 80,
+    "minY": 64,
+    "maxY": 2000,
+    "class": "prohibited",
+    "dimension": "minecraft:overworld",
+    "applies": "ships",
+    "enabled": true
+  }
+]
